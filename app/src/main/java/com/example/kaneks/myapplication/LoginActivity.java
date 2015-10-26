@@ -1,5 +1,5 @@
 package com.example.kaneks.myapplication;
-//comment kan7
+//comment kan6
 //comment prww
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
