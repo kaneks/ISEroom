@@ -4,6 +4,7 @@ package com.example.kaneks.myapplication;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -319,9 +320,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             for (String credential : DUMMY_CREDENTIALS) {
                 String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
+                if (pieces[0].equals(mEmail)&&pieces[1].equals(mPassword)) {
                     // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
+                    return true;
                 }
             }
 
@@ -335,6 +336,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
+                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                startActivity(intent);
                 finish();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
